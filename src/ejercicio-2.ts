@@ -59,7 +59,7 @@ class EquipoFactory {
     crearEquipo(tipo: "Notebook", modelo: string, ram: string, procesador: string): Notebook
     crearEquipo(tipo: "Desktop", modelo: string, ram: string, procesador: string): Desktop
     crearEquipo(tipo: "Servidor", modelo: string, ram: string, procesador: string): Servidor
-    crearEquipo(tipo: "Impresora", modelo: string, color: boolean, tipoImpresora: "laser" | "tinta"): Servidor
+    crearEquipo(tipo: "Impresora", modelo: string, color: boolean, tipoImpresora: "laser" | "tinta"): Impresora
     crearEquipo(tipo: TipoEquipo, modelo: string, colorORam: string | boolean, procesadorOTipo: string): Equipo {
         if (tipo == "Notebook") {
             return new Notebook(modelo, colorORam as string, procesadorOTipo);
@@ -78,5 +78,6 @@ const factory = new EquipoFactory();
 const notebook = factory.crearEquipo("Notebook", "Dell XPS", "16GB", "i7");
 const impresora = factory.crearEquipo("Impresora", "HP", false, "laser");
 console.log(notebook.detalles());
-console.log(impresora.detalles());
 // Tipo: Notebook, Nombre: Dell XPS, RAM: 16GB, Procesador: i7k
+console.log(impresora.detalles());
+// Tipo: Impresora, Nombre: HP, Color: false, TipoImpresion: Láser
