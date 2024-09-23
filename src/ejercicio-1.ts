@@ -20,10 +20,10 @@ export class Inventario {
     private constructor() { }
 
     static obtenerInstancia() {
-        if (Inventario.instancia) {
-            return Inventario.instancia;
+        if (!Inventario.instancia) {
+            Inventario.instancia = new Inventario()
         }
-        return new Inventario();
+        return Inventario.instancia;
     }
 
     agregarEquipo(nombre: string, tipo: string, estado: EquipoEstado) {
@@ -40,7 +40,11 @@ export class Inventario {
 }
 
 const inventario = Inventario.obtenerInstancia();
+const inventario1 = Inventario.obtenerInstancia();
+
 inventario.agregarEquipo("Notebook HP", "Portátil", "Disponible");
 console.log(inventario.listarEquipos());
+
+console.assert(inventario == inventario1, "Sólo puede existir una instancia de Inventario");
 
 
